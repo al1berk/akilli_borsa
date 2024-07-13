@@ -1,10 +1,12 @@
 import 'package:akilli_borsa/View/grafik.dart';
-import 'package:akilli_borsa/View/uyelik_islemleri/uyelikView.dart';
+import 'package:akilli_borsa/View/stock%20markets/Markets.dart';
+import 'package:akilli_borsa/View/uyelik_islemleri/SignInView.dart';
+import 'package:akilli_borsa/View/uyelik_islemleri/SignUpView.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
-import 'View/Widgets/Butonlar.dart';
+import 'View/Widgets/Buttons.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -24,12 +26,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
           backgroundColor: Color(0xFF071952),
+          iconTheme: IconThemeData(color: Colors.white),
         ),
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const SignInView(),
-    );
+      home: const Markets(),
+
+      );
   }
 }
 
@@ -60,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
 
 
-             ButtonTipBir(text : "Grafik Sayfasına Git" , onPressed: () {
+             ButtonOne(text : "Grafik Sayfasına Git" , onPressed: () {
                 Get.to(cizgi_grafik());}
              )
 

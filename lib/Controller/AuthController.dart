@@ -1,43 +1,39 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-class FirebaseModel {
+class AuthController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  Future<void> registerWithEmailAndPassword(String email, String password) async {
+  Future<User?> registerWithEmailAndPassword(String email, String password) async {
     try {
       UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
-      print('Kullanıcı kaydı başarılı: ${userCredential.user!.uid}');
+      return userCredential.user;
     } catch (e) {
       print('Kullanıcı kaydı başarısız: $e');
+      return null;
     }
   }
 
-  Future<void> signInWithEmailAndPassword(String email, String password) async {
+  Future<User?> signInWithEmailAndPassword(String email, String password) async {
     try {
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
-      print('Kullanıcı oturum açtı: ${userCredential.user!.uid}');
+      return userCredential.user;
     } catch (e) {
       print('Kullanıcı oturum açma başarısız: $e');
+      return null;
     }
-
-    Future<void> signOut() async {
-      try {
-        await _auth.signOut();
-        print('Kullanıcı çıkış yaptı');
-      } catch (e) {
-        print('Çıkış işlemi başarısız: $e');
-      }
-    }
-
   }
 
-
-
-
+  Future<void> signOut() async {
+    try {
+      await _auth.signOut();
+    } catch (e) {
+      print('Çıkış işlemi başarısız: $e');
+    }
+  }
 }

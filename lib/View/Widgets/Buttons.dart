@@ -5,10 +5,10 @@ import 'package:get/get_core/src/get_main.dart';
 
 import '../grafik.dart';
 
-class ButtonTipBir extends StatelessWidget {
+class ButtonOne extends StatelessWidget {
   final String text ;
   final VoidCallback onPressed;
-   ButtonTipBir({
+   ButtonOne({
      Key? key,
      required this.text,
      required this.onPressed
