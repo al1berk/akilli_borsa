@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "632797220051",
+    "project_id": "akilli-borsa",
+    "storage_bucket": "akilli-borsa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632797220051:android:02c5dd4f814889bcba1826",
+        "android_client_info": {
+          "package_name": "com.simurgApp.akilli_borsa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA69dM_DD6_ofFf-aJ9IjV43rVOOuGOnRI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
