@@ -1,29 +1,25 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-import '../Model/Stock.dart';
+import 'package:get/get.dart';
+import '../Model/StockService.dart';
+import '../model/stock.dart';
 
-class Stockcontroller {
-  String apiUrl = "http://aliberk.pythonanywhere.com/";
+class StockController extends GetxController {
+  var stockItems = <String,Stock>{}.obs;
+  var isLoading = true.obs;
 
-  Future<Stock> fetchStock(String symbol) async {
+  @override
+  void onInit() {
+    fetchStocks("AKBNK");
+    super.onInit();
+  }
 
-    final  response = (await http.get(Uri.parse("$apiUrl$symbol")));
-    if (response.statusCode == 200) {
-      final data = json.decode(response.body);
-      return Stock(
-        symbol: data["Symbol"],
-        time: data["Datetime"],
-        open: data["Open"],
-        high: data["High"],
-        low: data["Low"],
-        close: data["Close"],
-        volume: data["Volume"],
-        dividends: data["Dividends"],
-        stockSplits: data["Stock Splits"],
-      );
-    } else {
-      throw Exception("Failed to load stock");
+  Future<void> fetchStocks(String symbol) async {
+    try {
+      isLoading(true);
+      var stockList = await StockService().fetchStock(symbol);
+      stockItems[symbol] = stockList[0];
+    } finally {
+      isLoading(false);
     }
-
   }
 }
+

@@ -23,7 +23,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
           case 1:
             if (selectedIndex.value != 1) {
                   Get.to(
-                      const Markets());
+                       Markets());
                 }
                 break;
           case 2:

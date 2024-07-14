@@ -1,14 +1,17 @@
 
+import 'package:flutter/foundation.dart';
+
 class Stock {
   final String symbol;
   final String time;
-  final String open;
-  final String high;
-  final String low;
-  final String close;
-  final String volume;
-  final String dividends;
-  final String stockSplits;
+  final double open;
+  final double high;
+  final double low;
+  final double close;
+  final int volume;
+  final double dividends;
+  final double stockSplits;
+
   Stock({
     required this.symbol,
     required this.time,
@@ -19,18 +22,31 @@ class Stock {
     required this.volume,
     required this.dividends,
     required this.stockSplits,
-
   });
-  Future<int> getPercentage () async {
-    double open = double.parse(this.open);
-    double close = double.parse(this.close);
-    double percentage = ((close - open) / open) * 100;
-    return percentage.toInt();
+
+  factory Stock.fromJson(Map<String, dynamic> json) {
+
+    return Stock(
+      symbol: json["Symbol"],
+      time: json["Date"],
+      open: json["Open"],
+      high: json["High"],
+      low: json["Low"],
+      close: json["Close"],
+      volume: json["Volume"],
+      dividends: json["Dividends"],
+      stockSplits: json["Stock Splits"],
+    );
   }
-  Future<bool> isUp() async {
-    double open = double.parse(this.open);
-    double close = double.parse(this.close);
+
+  String getPercentage() {
+
+    double percentage = ((close - open) / open) * 100;
+    return percentage.toString();
+  }
+
+  bool isUp() {
+
     return close > open;
   }
-
 }

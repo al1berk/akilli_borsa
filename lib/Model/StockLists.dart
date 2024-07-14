@@ -2,11 +2,11 @@
   List<String> markets = ["BIST 30","BIST 100","Yıldız Pazar","Ana Pazar"];
   List<String> bist30Stocks = [
     'AKBNK', 'ASELS', 'ENJSA', 'GARAN', 'HALKB',
-    'ISCTR', 'KCHOL', 'KOZAL', 'PETKM', 'SAHOL',
-    'SASA', 'THYAO', 'TUPRS', 'VESTL', 'YKBNK',
-    'ADANA', 'AFYON', 'ANACM', 'BIMAS', 'CCOLA',
-    'CEYLN', 'DOHOL', 'EKGYO', 'EREGL', 'FROTO',
-    'GOLTS', 'ICBCT', 'SISE', 'TKFEN', 'TTKOM',
+    //'ISCTR', 'KCHOL', 'KOZAL', 'PETKM', 'SAHOL',
+    //'SASA', 'THYAO', 'TUPRS', 'VESTL', 'YKBNK',
+   // 'ADANA', 'AFYON', 'ANACM', 'BIMAS', 'CCOLA',
+   // 'CEYLN', 'DOHOL', 'EKGYO', 'EREGL', 'FROTO',
+   // 'GOLTS', 'ICBCT', 'SISE', 'TKFEN', 'TTKOM',
   ];
   List<String> bist100Stocks = [
     'AKBNK', 'ASELS', 'ENJSA', 'GARAN', 'HALKB',

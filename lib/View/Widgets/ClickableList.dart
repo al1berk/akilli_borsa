@@ -1,5 +1,10 @@
+import 'package:akilli_borsa/Model/Stock.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_rx/src/rx_types/rx_types.dart';
 
+import '../../Controller/StockController.dart';
 import '../../Model/StockLists.dart';
 
 class ClickableListWidget extends StatelessWidget {
@@ -47,84 +52,96 @@ class ClickableListWidget extends StatelessWidget {
 }
 
 class StockListWidget extends StatelessWidget {
-  final List<StockItem> stockItems;
-
+  final StockController stockController = Get.find();
   final Function(String) onItemClick;
 
-  const StockListWidget({
+  StockListWidget({
     Key? key,
-    required this.stockItems,
     required this.onItemClick,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: stockItems.length,
-      itemBuilder: (context, index) {
-        return GestureDetector(
-          onTap: () {
-            onItemClick(stockItems[index].symbol);
-          },
-          child: Container(
-            padding: EdgeInsets.symmetric( vertical: 16),
-            decoration: BoxDecoration(
-              border: Border(bottom: BorderSide(color: Colors.grey.shade200)),
+
+
+
+      return ListView.builder(
+        itemCount: bist30Stocks.length,
+        itemBuilder: (context, index) {
+          String key = bist30Stocks[index];
+          stockController.fetchStocks(key);
+          return Obx(() {
+          if (stockController.stockItems[key] == null) {
+            return const Center(child: CircularProgressIndicator(),);
+          }
+          return GestureDetector(
+            onTap: () {
+              onItemClick(stockController.stockItems[key]?.symbol ?? "" );
+            },
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: 16),
+              decoration: BoxDecoration(
+                border: Border(bottom: BorderSide(color: Colors.grey.shade200)),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.only(left: 16),
+                          child: Text(
+                            stockController.stockItems[key]?.symbol ?? "",
+                            style: const TextStyle(fontWeight: FontWeight.bold),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.only(left: 16),
+                          child: Text(
+                            stockController.stockItems[key]?.time ?? "",
+                            style: const TextStyle(color: Colors.grey),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: Text(
+                      stockController.stockItems[key]?.open.toString() ?? "",
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: Row(
+                      children: [
+                        Icon(
+                          stockController.stockItems[key]?.isUp() ?? false ? Icons.arrow_upward : Icons.arrow_downward,
+                          color: stockController.stockItems[key]?.isUp() ?? false ? Colors.green : Colors.red,
+                        ),
+                        Text(
+                          stockController.stockItems[key]?.getPercentage() ?? "",
+                          style: TextStyle(
+                            color: stockController.stockItems[key]?.isUp() ?? false ? Colors.green : Colors.red,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 3,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.only(left: 16),
-                        child: Text(stockItems[index].symbol, style: const TextStyle(fontWeight: FontWeight.bold),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis, ),
-
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(left: 16),
-                        child: Text(stockItems[index].time, style: const TextStyle(color: Colors.grey),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis, ),
-                      )
-
-                    ],
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Text(
-                    stockItems[index].value,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Row(
-                    children: [
-                      Icon(
-                        stockItems[index].isUp ? Icons.arrow_upward : Icons.arrow_downward,
-                        color: stockItems[index].isUp ? Colors.green : Colors.red,
-                      ),
-
-
-                      Text(stockItems[index].percentage,
-                                              style: TextStyle(
-                      color: stockItems[index].isUp ? Colors.green : Colors.red,
-                      fontWeight: FontWeight.bold,
-                                              ),),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-    );
+          );
+        },
+      );
+    });
   }
 }
