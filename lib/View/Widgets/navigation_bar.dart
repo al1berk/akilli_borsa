@@ -1,13 +1,12 @@
+import 'package:akilli_borsa/View/portf%C3%B6y/portfoy_page.dart';
 import 'package:akilli_borsa/View/stock%20markets/Markets.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
 class BottomNavigationBarWidget extends StatelessWidget {
-  final RxInt selectedIndex = 1.obs; // Reactive variable for selected index
+  final RxInt selectedIndex = 1.obs;
+
+   BottomNavigationBarWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +17,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
 
         switch (index) {
           case 0:
-            Get.to('/home');
+            Get.to(const PortfoyPage());
             break;
           case 1:
             if (selectedIndex.value != 1) {
@@ -33,16 +32,16 @@ class BottomNavigationBarWidget extends StatelessWidget {
       },
       items: const [
         BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: 'Home',
+          icon: Icon(Icons.account_balance_wallet_outlined),
+          label: 'Portföy',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.search),
-          label: 'Search',
+          icon: Icon(Icons.auto_graph_outlined),
+          label: 'Piyasalar',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
-          label: 'Profile',
+          label: 'Profil',
         ),
       ],
     ));

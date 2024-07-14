@@ -1,4 +1,4 @@
-import 'package:akilli_borsa/View/Widgets/Buttons.dart';
+import 'package:akilli_borsa/View/Widgets/buttons.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 

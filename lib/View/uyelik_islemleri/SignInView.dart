@@ -1,5 +1,5 @@
 import 'package:akilli_borsa/Model/UserModel.dart';
-import 'package:akilli_borsa/View/Widgets/Buttons.dart';
+import 'package:akilli_borsa/View/Widgets/buttons.dart';
 import 'package:akilli_borsa/View/Widgets/textFields.dart';
 import 'package:akilli_borsa/View/stock%20markets/Markets.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -21,7 +21,7 @@ class _SignInViewState extends State<SignInView> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final AuthController _authController = AuthController();
-  final UserController _userController = UserController();
+  final UserController userController = Get.put(UserController());
 
 
   @override
@@ -47,12 +47,12 @@ class _SignInViewState extends State<SignInView> {
             User? user = await _authController.signInWithEmailAndPassword(emailController.text, passwordController.text);
             if (user != null) {
 
-              UserModel? userModel = await _userController.getLastUser();
+              UserModel? userModel = userController.user.value ;
               if (userModel != null) {
                 print("Kullanıcı oturum açtı uid : ${userModel.id}");
                 print("Kullanıcı adı : ${userModel.username}");
               } else {
-                _userController.addUser("username", emailController.text, user.uid);
+                userController.addUser("username", emailController.text, user.uid);
               }
               Get.to(Markets());
             } else {

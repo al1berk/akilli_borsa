@@ -1,11 +1,11 @@
 import 'package:akilli_borsa/Model/StockLists.dart';
-import 'package:akilli_borsa/View/Widgets/ClickableList.dart';
+import 'package:akilli_borsa/View/Widgets/clickable_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../Controller/StockController.dart';
-import '../Widgets/NavigationBar.dart';
+import '../Widgets/navigation_bar.dart';
 import 'Stocks.dart';
 
 class Markets extends StatelessWidget {
@@ -18,7 +18,7 @@ class Markets extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Stocks', style: TextStyle(color: Colors.white)),
+        title: const Text('Piyasalar', style: TextStyle(color: Colors.white)),
       ),
       body:  ClickableListWidget(items: markets, onItemClick:(item) {
         if (item == markets[0]) {
@@ -35,7 +35,7 @@ class Markets extends StatelessWidget {
         }
 
 
-        Get.to(Stocks() , arguments: item);
+        Get.to(Stocks() , arguments: stocksList);
       } ),
       bottomNavigationBar: BottomNavigationBarWidget(),
     );

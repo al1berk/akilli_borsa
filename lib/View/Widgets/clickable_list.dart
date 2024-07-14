@@ -1,11 +1,6 @@
-import 'package:akilli_borsa/Model/Stock.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
-
 import '../../Controller/StockController.dart';
-import '../../Model/StockLists.dart';
 
 class ClickableListWidget extends StatelessWidget {
   final List<String> items;
@@ -54,9 +49,10 @@ class ClickableListWidget extends StatelessWidget {
 class StockListWidget extends StatelessWidget {
   final StockController stockController = Get.find();
   final Function(String) onItemClick;
-
+  final List<String> market ;
   StockListWidget({
     Key? key,
+    required this.market,
     required this.onItemClick,
   }) : super(key: key);
 
@@ -66,9 +62,9 @@ class StockListWidget extends StatelessWidget {
 
 
       return ListView.builder(
-        itemCount: bist30Stocks.length,
+        itemCount: market.length,
         itemBuilder: (context, index) {
-          String key = bist30Stocks[index];
+          String key = market[index];
           stockController.fetchStocks(key);
           return Obx(() {
           if (stockController.stockItems[key] == null) {
@@ -114,7 +110,7 @@ class StockListWidget extends StatelessWidget {
                   Expanded(
                     flex: 2,
                     child: Text(
-                      stockController.stockItems[key]?.open.toString() ?? "",
+                      stockController.stockItems[key]?.open.toStringAsFixed(2) ?? "",
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),

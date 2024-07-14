@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 
 import '../../Model/Stock.dart';
 import '../../Model/StockLists.dart';
-import '../Widgets/ClickableList.dart';
-import '../Widgets/NavigationBar.dart';
+import '../Widgets/clickable_list.dart';
+import '../Widgets/navigation_bar.dart';
 
 class Stocks extends StatefulWidget {
   const Stocks({super.key});
@@ -18,17 +18,18 @@ class Stocks extends StatefulWidget {
 class _StocksState extends State<Stocks> {
 
 
-
+  List<String> stocksList = Get.arguments;
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Stocks', style: TextStyle(color: Colors.white)),
+        title: const Text('Hisse Senetleri', style: TextStyle(color: Colors.white)),
       ),
       body:
       StockListWidget(
+        market: stocksList,
         onItemClick: (item) {
           print(item);
         },

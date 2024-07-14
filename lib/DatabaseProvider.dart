@@ -22,10 +22,20 @@ class DatabaseProvider {
 
   void _createDB(Database db, int version) async {
     await db.execute('''
-      CREATE TABLE users (
+      CREATE TABLE user (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        username TEXT,
-        email TEXT
+        userID TEXT NOT NULL,
+        username TEXT NOT NULL,
+        email TEXT NOT NULL
+      )
+    ''');
+
+    await db.execute('''
+      CREATE TABLE user_stocks (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        user_id INTEGER NOT NULL,
+        stock_symbol TEXT NOT NULL,
+        FOREIGN KEY (user_id) REFERENCES user (id)
       )
     ''');
   }

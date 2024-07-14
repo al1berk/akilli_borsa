@@ -42,11 +42,11 @@ class Stock {
   String getPercentage() {
 
     double percentage = ((close - open) / open) * 100;
-    return percentage.toString();
+    return percentage.toStringAsFixed(2);
   }
 
   bool isUp() {
 
-    return close > open;
+    return close >= open;
   }
 }

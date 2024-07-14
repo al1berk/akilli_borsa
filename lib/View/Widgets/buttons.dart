@@ -1,14 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
-import '../grafik.dart';
+
 
 class ButtonOne extends StatelessWidget {
   final String text ;
   final VoidCallback onPressed;
-   ButtonOne({
+   const ButtonOne({
      Key? key,
      required this.text,
      required this.onPressed
@@ -28,5 +25,17 @@ class ButtonOne extends StatelessWidget {
           ),
         )
         ,child: Text(text));
+  }
+}
+
+class IconButtonOne extends StatelessWidget {
+  final Icon icon;
+  final VoidCallback onPressed;
+  
+  const IconButtonOne({super.key, required this.icon, required this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(onPressed: onPressed, icon: icon);
   }
 }
