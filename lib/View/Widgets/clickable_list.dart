@@ -51,10 +51,8 @@ class StockListWidget extends StatelessWidget {
   final userController = Get.find<UserController>();
   final StockController stockController = Get.find();
   final Function(String) onItemClick;
-  final List<String>? market ;
   StockListWidget({
     Key? key,
-     this.market,
     required this.onItemClick,
   }) : super(key: key);
 
@@ -65,9 +63,9 @@ class StockListWidget extends StatelessWidget {
 
       return Obx(() {
         return ListView.builder(
-        itemCount: market != null ? market!.length : userController.userStocks.length,
+        itemCount:  userController.userStocks.length,
         itemBuilder: (context, index) {
-          String key =  market != null ? market![index] : userController.userStocks[index];
+          String key = userController.userStocks[index];
           stockController.fetchStocks(key);
           return Obx(() {
           if (stockController.stockItems[key] == null) {

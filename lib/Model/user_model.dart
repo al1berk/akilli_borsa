@@ -3,8 +3,7 @@ class UserModel {
   final String userID;
   final String username;
   final String email;
-  final bool isLogged;
-  final bool isPremium;
+
 
   UserModel({
     this.id,
@@ -12,10 +11,9 @@ class UserModel {
     required this.userID,
     required this.username,
     required this.email,
-    this.isLogged = false,
-    this.isPremium = false
 
-    ,
+
+
   });
 
   Map<String, dynamic> toMap() {
@@ -24,8 +22,7 @@ class UserModel {
       'userID': userID,
       'username': username,
       'email': email,
-      'isLogged': isLogged,
-      'isPremium': isPremium,
+
     };
   }
 
@@ -35,8 +32,7 @@ class UserModel {
       userID: map['userID'],
       username: map['username'],
       email: map['email'],
-      isLogged: map['isLogged'],
-      isPremium: map['isPremium'],
+
     );
   }
 }

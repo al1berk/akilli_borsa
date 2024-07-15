@@ -1,5 +1,6 @@
 import 'package:akilli_borsa/Model/stock_lists.dart';
 import 'package:akilli_borsa/View/Widgets/clickable_list.dart';
+import 'package:akilli_borsa/View/stock%20markets/stock_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:akilli_borsa/Controller/user_controller.dart';
@@ -59,7 +60,9 @@ class _PortfoyPageState extends State<PortfoyPage> {
               if (userController.userStocks.isEmpty) {
                 return Center(child: Text('Hisse Ekleyin'));
               }
-              return StockListWidget(onItemClick: (value){} ,);
+              return StockListWidget(onItemClick: (value){
+                Get.to(StockDetail(),arguments: value);
+              } ,);
             }),
           ),
         ],
