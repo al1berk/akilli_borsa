@@ -1,12 +1,12 @@
-import 'package:akilli_borsa/Model/StockLists.dart';
+import 'package:akilli_borsa/Model/stock_lists.dart';
 import 'package:akilli_borsa/View/Widgets/clickable_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../Controller/StockController.dart';
+import '../../Controller/stock_controller.dart';
 import '../Widgets/navigation_bar.dart';
-import 'Stocks.dart';
+import 'stocks.dart';
 
 class Markets extends StatelessWidget {
 

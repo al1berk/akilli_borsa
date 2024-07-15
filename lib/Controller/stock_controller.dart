@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import '../Model/StockService.dart';
+import '../Model/stock_service.dart';
 import '../model/stock.dart';
 
 class StockController extends GetxController {

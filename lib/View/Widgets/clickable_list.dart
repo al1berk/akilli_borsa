@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../Controller/StockController.dart';
-import '../../Controller/UserController.dart';
+import '../../Controller/stock_controller.dart';
+import '../../Controller/user_controller.dart';
 
 class ClickableListWidget extends StatelessWidget {
   final List<String> items;

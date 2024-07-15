@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
-import '../Model/UserDao.dart';
-import '../Model/UserModel.dart';
+import '../Model/user_dao.dart';
+import '../Model/user_model.dart';
 
 class UserController extends GetxController {
   final UserDao _userDao = UserDao();

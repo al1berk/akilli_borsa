@@ -1,14 +1,14 @@
-import 'package:akilli_borsa/Model/UserModel.dart';
+import 'package:akilli_borsa/Model/user_model.dart';
 import 'package:akilli_borsa/View/Widgets/buttons.dart';
 import 'package:akilli_borsa/View/Widgets/textFields.dart';
-import 'package:akilli_borsa/View/stock%20markets/Markets.dart';
+import 'package:akilli_borsa/View/stock%20markets/markets.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../Controller/AuthController.dart';
-import '../../Controller/UserController.dart';
-import 'SignUpView.dart';
+import '../../Controller/auth_controller.dart';
+import '../../Controller/user_controller.dart';
+import 'sign_up_view.dart';
 
 class SignInView extends StatefulWidget {
   const SignInView({super.key});

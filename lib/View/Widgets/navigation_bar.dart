@@ -1,6 +1,6 @@
 import 'package:akilli_borsa/View/portf%C3%B6y/portfoy_page.dart';
 import 'package:akilli_borsa/View/profile/profile_page.dart';
-import 'package:akilli_borsa/View/stock%20markets/Markets.dart';
+import 'package:akilli_borsa/View/stock%20markets/markets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 final RxInt selectedIndex = 1.obs;
@@ -14,13 +14,13 @@ class BottomNavigationBarWidget extends StatelessWidget {
       selectedIndex.value = index;
       switch (index) {
         case 0:
-          Get.offAll(() => const PortfoyPage());
+          Get.offAll(() => const PortfoyPage() ,transition: Transition.fadeIn);
           break;
         case 1:
-          Get.offAll(() => Markets());
+          Get.offAll(() => Markets() ,transition: Transition.fadeIn);
           break;
         case 2:
-          Get.offAll(() => const ProfilePage());
+          Get.offAll(() => const ProfilePage() , transition: Transition.fadeIn);
           break;
       }
     }

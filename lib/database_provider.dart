@@ -30,6 +30,9 @@ class DatabaseProvider {
         userID TEXT NOT NULL,
         username TEXT NOT NULL,
         email TEXT NOT NULL
+        isLogged BOOLEAN NOT NULL,
+        isPremium BOOLEAN NOT NULL
+        
       )
     ''');
 

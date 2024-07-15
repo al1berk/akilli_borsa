@@ -2,7 +2,7 @@ import 'package:akilli_borsa/View/Widgets/buttons.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../../Controller/AuthController.dart';
+import '../../Controller/auth_controller.dart';
 import '../Widgets/textFields.dart';
 
 class SignUpView extends StatefulWidget {

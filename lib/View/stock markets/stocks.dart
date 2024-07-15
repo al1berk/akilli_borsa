@@ -1,10 +1,10 @@
-import 'package:akilli_borsa/Controller/StockController.dart';
+import 'package:akilli_borsa/Controller/stock_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../Model/Stock.dart';
-import '../../Model/StockLists.dart';
+import '../../Model/stock.dart';
+import '../../Model/stock_lists.dart';
 import '../Widgets/clickable_list.dart';
 import '../Widgets/navigation_bar.dart';
 

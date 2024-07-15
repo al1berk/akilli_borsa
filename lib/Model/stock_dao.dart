@@ -1,7 +1,7 @@
 
 
-import '../DatabaseProvider.dart';
-import 'StockModel.dart';
+import '../database_provider.dart';
+import 'stock_model.dart';
 
 class StockDao {
   final dbProvider = DatabaseProvider.db;

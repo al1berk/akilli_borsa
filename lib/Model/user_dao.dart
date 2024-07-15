@@ -1,6 +1,6 @@
 import 'package:sqflite/sqflite.dart';
-import '../DatabaseProvider.dart';
-import 'UserModel.dart';
+import '../database_provider.dart';
+import 'user_model.dart';
 
 class UserDao {
   final dbProvider = DatabaseProvider.db;
