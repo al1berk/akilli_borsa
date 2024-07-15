@@ -28,7 +28,7 @@ class _StocksState extends State<Stocks> {
         title: const Text('Hisse Senetleri', style: TextStyle(color: Colors.white)),
       ),
       body:
-      StockListWidget(
+      StockListWidgetTwo(
         market: stocksList,
         onItemClick: (item) {
           print(item);

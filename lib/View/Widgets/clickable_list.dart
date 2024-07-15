@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../Controller/StockController.dart';
+import '../../Controller/UserController.dart';
 
 class ClickableListWidget extends StatelessWidget {
   final List<String> items;
@@ -47,12 +48,13 @@ class ClickableListWidget extends StatelessWidget {
 }
 
 class StockListWidget extends StatelessWidget {
+  final userController = Get.find<UserController>();
   final StockController stockController = Get.find();
   final Function(String) onItemClick;
-  final List<String> market ;
+  final List<String>? market ;
   StockListWidget({
     Key? key,
-    required this.market,
+     this.market,
     required this.onItemClick,
   }) : super(key: key);
 
@@ -61,10 +63,11 @@ class StockListWidget extends StatelessWidget {
 
 
 
-      return ListView.builder(
-        itemCount: market.length,
+      return Obx(() {
+        return ListView.builder(
+        itemCount: market != null ? market!.length : userController.userStocks.length,
         itemBuilder: (context, index) {
-          String key = market[index];
+          String key =  market != null ? market![index] : userController.userStocks[index];
           stockController.fetchStocks(key);
           return Obx(() {
           if (stockController.stockItems[key] == null) {
@@ -139,5 +142,106 @@ class StockListWidget extends StatelessWidget {
         },
       );
     });
+  }
+  );
+  }
+}
+
+class StockListWidgetTwo extends StatelessWidget {
+  final userController = Get.find<UserController>();
+  final StockController stockController = Get.find();
+  final Function(String) onItemClick;
+  final List<String> market ;
+  StockListWidgetTwo({
+    Key? key,
+    required this.market,
+    required this.onItemClick,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+
+
+
+      return ListView.builder(
+          itemCount: market.length,
+          itemBuilder: (context, index) {
+            String key =  market[index];
+            stockController.fetchStocks(key);
+            return Obx(() {
+              if (stockController.stockItems[key] == null) {
+                return const Center(child: CircularProgressIndicator(),);
+              }
+              return GestureDetector(
+                onTap: () {
+                  onItemClick(stockController.stockItems[key]?.symbol ?? "" );
+                },
+                child: Container(
+                  padding: EdgeInsets.symmetric(vertical: 16),
+                  decoration: BoxDecoration(
+                    border: Border(bottom: BorderSide(color: Colors.grey.shade200)),
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 3,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.only(left: 16),
+                              child: Text(
+                                stockController.stockItems[key]?.symbol ?? "",
+                                style: const TextStyle(fontWeight: FontWeight.bold),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.only(left: 16),
+                              child: Text(
+                                stockController.stockItems[key]?.time ?? "",
+                                style: const TextStyle(color: Colors.grey),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: Text(
+                          stockController.stockItems[key]?.open.toStringAsFixed(2) ?? "",
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: Row(
+                          children: [
+                            Icon(
+                              stockController.stockItems[key]?.isUp() ?? false ? Icons.arrow_upward : Icons.arrow_downward,
+                              color: stockController.stockItems[key]?.isUp() ?? false ? Colors.green : Colors.red,
+                            ),
+                            Text(
+                              stockController.stockItems[key]?.getPercentage() ?? "",
+                              style: TextStyle(
+                                color: stockController.stockItems[key]?.isUp() ?? false ? Colors.green : Colors.red,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+
+          );
+    }
+    );
   }
 }

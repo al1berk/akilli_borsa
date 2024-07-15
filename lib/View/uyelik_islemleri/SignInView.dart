@@ -46,15 +46,18 @@ class _SignInViewState extends State<SignInView> {
           ButtonOne(text: "Giriş yap", onPressed: () async {
             User? user = await _authController.signInWithEmailAndPassword(emailController.text, passwordController.text);
             if (user != null) {
-
+              print("veri çekildi uid : ${user.uid}");
+              await userController.fetchUserByUserID(user.uid);
               UserModel? userModel = userController.user.value ;
               if (userModel != null) {
-                print("Kullanıcı oturum açtı uid : ${userModel.id}");
+                print("Kullanıcı oturum açtı uid : ${userModel.id} , ${userModel.userID}");
                 print("Kullanıcı adı : ${userModel.username}");
+                userController.fetchUserStocks(userModel.userID);
               } else {
-                userController.addUser("username", emailController.text, user.uid);
+                print("kullanıcı bulunamadı");
+                userController.addUser(user.uid, "username",emailController.text);
               }
-              Get.to(Markets());
+              Get.offAll(Markets());
             } else {
               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                 content: Text("Kullanıcı oturum açma başarısız"),

@@ -14,7 +14,10 @@ class DatabaseProvider {
     _database = await initDB();
     return _database!;
   }
-
+  void clearDB() async {
+    String path = join(await getDatabasesPath(), 'my_database.db');
+    await deleteDatabase(path);
+  }
   Future<Database> initDB() async {
     String path = join(await getDatabasesPath(), 'my_database.db');
     return await openDatabase(path, version: 1, onCreate: _createDB);
@@ -33,7 +36,7 @@ class DatabaseProvider {
     await db.execute('''
       CREATE TABLE user_stocks (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        user_id INTEGER NOT NULL,
+        user_id TEXT NOT NULL,
         stock_symbol TEXT NOT NULL,
         FOREIGN KEY (user_id) REFERENCES user (id)
       )
