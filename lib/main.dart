@@ -65,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
              ButtonOne(text : "Grafik Sayfasına Git" , onPressed: () {
-                Get.to(cizgi_grafik());}
+                Get.to(CizgiGrafik(urlApi:"grafik2"));}
              )
 
 

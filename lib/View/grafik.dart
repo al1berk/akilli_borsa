@@ -1,45 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'; // SystemChrome için gerekli kütüphane
 import 'package:webview_flutter/webview_flutter.dart';
 
-class cizgi_grafik extends StatelessWidget {
-  final WebViewController controller = WebViewController()
-    ..setJavaScriptMode(JavaScriptMode.unrestricted)
-    ..setBackgroundColor(const Color(0x00000000))
-    ..setNavigationDelegate(
-      NavigationDelegate(
-        onProgress: (int progress) {
-
-        },
-        onPageStarted: (String url) {},
-        onPageFinished: (String url) {},
-        onHttpError: (HttpResponseError error) {},
-        onWebResourceError: (WebResourceError error) {},
-        onNavigationRequest: (NavigationRequest request) {
-          if (request.url.startsWith('https://www.youtube.com/')) {
-            return NavigationDecision.prevent;
-          }
-          return NavigationDecision.navigate;
-
-        },
-      ),
-    )
-    ..loadRequest(Uri.parse('https://aliberk.pythonanywhere.com/grafik2'));
+class CizgiGrafik extends StatelessWidget {
+  final String urlApi;
+  CizgiGrafik({required this.urlApi});
 
   @override
   Widget build(BuildContext context) {
-    // Yatay görüntülemeyi etkinleştir
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.landscapeLeft,
-      DeviceOrientation.landscapeRight,
-    ]);
+    WebViewController controller = WebViewController()
+      ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setBackgroundColor(const Color(0x00000000))
+      ..setNavigationDelegate(
+        NavigationDelegate(
+          onProgress: (int progress) {},
+          onPageStarted: (String url) {},
+          onPageFinished: (String url) {},
+          onHttpError: (HttpResponseError error) {},
+          onWebResourceError: (WebResourceError error) {},
+          onNavigationRequest: (NavigationRequest request) {
+            if (request.url.startsWith('https://www.youtube.com/')) {
+              return NavigationDecision.prevent;
+            }
+            return NavigationDecision.navigate;
+          },
+        ),
+      );
 
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.secondary,
-        title: const Text('Çizgi Grafik'),
-      ),
-      body: WebViewWidget(controller: controller),
+    // Moved the loadRequest to be inside the build method.
+    controller.loadRequest(Uri.parse('https://aliberk.pythonanywhere.com/$urlApi'));
+
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.98,
+      height: MediaQuery.of(context).size.height * 0.3,
+      child: WebViewWidget(controller: controller),
     );
   }
 }

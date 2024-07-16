@@ -29,10 +29,8 @@ class DatabaseProvider {
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         userID TEXT NOT NULL,
         username TEXT NOT NULL,
-        email TEXT NOT NULL,
- 
-        
-      )
+        email TEXT NOT NULL
+        )
     ''');
 
     await db.execute('''
