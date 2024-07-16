@@ -1,6 +1,8 @@
 import 'package:akilli_borsa/View/Widgets/buttons.dart';
+import 'package:akilli_borsa/View/uyelik_islemleri/sign_in_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../Controller/auth_controller.dart';
 import '../Widgets/textFields.dart';
@@ -41,6 +43,7 @@ class _SignUpViewState extends State<SignUpView> {
             User? user  = await _authController.registerWithEmailAndPassword(emailController.text, passwordController.text);
             if (user != null) {
               print("Kullanıcı oluşturuldu uid : ${user.uid}");
+              Get.offAll(SignInView());
             } else {
               print("Kullanıcı oluşturulamadı");
             }
