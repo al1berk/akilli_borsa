@@ -76,7 +76,7 @@ class StockListWidget extends StatelessWidget {
               onItemClick(stockController.stockItems[key]?.symbol ?? "" );
             },
             child: Container(
-              padding: EdgeInsets.symmetric(vertical: 16),
+              padding: const EdgeInsets.symmetric(vertical: 16),
               decoration: BoxDecoration(
                 border: Border(bottom: BorderSide(color: Colors.grey.shade200)),
               ),
@@ -175,7 +175,7 @@ class StockListWidgetTwo extends StatelessWidget {
                   onItemClick(stockController.stockItems[key]?.symbol ?? "" );
                 },
                 child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 16),
+                  padding: const EdgeInsets.symmetric(vertical: 16),
                   decoration: BoxDecoration(
                     border: Border(bottom: BorderSide(color: Colors.grey.shade200)),
                   ),

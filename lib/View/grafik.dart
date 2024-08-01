@@ -3,7 +3,9 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 class CizgiGrafik extends StatelessWidget {
   final String urlApi;
-  CizgiGrafik({required this.urlApi});
+  const CizgiGrafik({super.key, required this.urlApi});
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +28,11 @@ class CizgiGrafik extends StatelessWidget {
         ),
       );
 
-    // Moved the loadRequest to be inside the build method.
     controller.loadRequest(Uri.parse('https://aliberk.pythonanywhere.com/$urlApi'));
-
+    print('https://aliberk.pythonanywhere.com/$urlApi');
     return Container(
-      width: MediaQuery.of(context).size.width * 0.98,
-      height: MediaQuery.of(context).size.height * 0.3,
+      width: MediaQuery.of(context).size.width *9.8,
+      height: MediaQuery.of(context).size.height * 0.4,
       child: WebViewWidget(controller: controller),
     );
   }

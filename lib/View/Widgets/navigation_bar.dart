@@ -7,7 +7,7 @@ final RxInt selectedIndex = 1.obs;
 
 class BottomNavigationBarWidget extends StatelessWidget {
 
-  BottomNavigationBarWidget({super.key});
+  const BottomNavigationBarWidget({super.key});
 
   void onItemTapped(int index) {
     if (selectedIndex.value != index) {

@@ -1,10 +1,7 @@
-import 'package:akilli_borsa/Controller/stock_controller.dart';
+import 'package:akilli_borsa/View/stock%20markets/stock_detail.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../Model/stock.dart';
-import '../../Model/stock_lists.dart';
 import '../Widgets/clickable_list.dart';
 import '../Widgets/navigation_bar.dart';
 
@@ -31,7 +28,8 @@ class _StocksState extends State<Stocks> {
       StockListWidgetTwo(
         market: stocksList,
         onItemClick: (item) {
-          print(item);
+          Get.to(StockDetail(),arguments: item);
+
         },
       ),
 

@@ -8,10 +8,6 @@ class UserController extends GetxController {
   var user = Rxn<UserModel>();
   RxList<String> userStocks = <String>[].obs;
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   Future<void> addUser(String userID, String username, String email) async {
     try {

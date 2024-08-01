@@ -1,6 +1,6 @@
 import 'package:akilli_borsa/Model/user_model.dart';
 import 'package:akilli_borsa/View/Widgets/buttons.dart';
-import 'package:akilli_borsa/View/Widgets/textFields.dart';
+import 'package:akilli_borsa/View/Widgets/text_fields.dart';
 import 'package:akilli_borsa/View/stock%20markets/markets.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

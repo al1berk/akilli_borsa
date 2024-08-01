@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-class TimePeriodSelector extends StatefulWidget {
-  const TimePeriodSelector({super.key});
+class TimeIntervalSelector extends StatefulWidget {
+  final Function(String) onItemClick;
+  final List<String> periods ;
+   const TimeIntervalSelector({super.key, required this.onItemClick , required this.periods});
 
   @override
-  _TimePeriodSelectorState createState() => _TimePeriodSelectorState();
+  _TimeIntervalSelectorState createState() => _TimeIntervalSelectorState();
 }
 
-class _TimePeriodSelectorState extends State<TimePeriodSelector> {
+class _TimeIntervalSelectorState extends State<TimeIntervalSelector> {
   int selectedIndex = 0;
-  List<String> periods = ["1D", "5D", "1M", "6M", "1Y", "3Y", "5Y"];
 
   @override
   Widget build(BuildContext context) {
@@ -29,25 +30,28 @@ class _TimePeriodSelectorState extends State<TimePeriodSelector> {
             ],
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: List.generate(periods.length, (index) {
+            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+            child: Wrap(
+              alignment: WrapAlignment.center,
+              spacing: 8.0,
+              runSpacing: 8.0,
+              children: List.generate(widget.periods.length, (index) {
                 bool isSelected = selectedIndex == index;
                 return GestureDetector(
                   onTap: () {
                     setState(() {
                       selectedIndex = index;
+                      widget.onItemClick(index.toString());
                     });
                   },
                   child: Container(
                     decoration: BoxDecoration(
                       color: isSelected ? Colors.orange : Colors.transparent,
-                      shape: BoxShape.circle,
+                      borderRadius: BorderRadius.circular(16),
                     ),
                     padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                     child: Text(
-                      periods[index],
+                      widget.periods[index],
                       style: TextStyle(
                         color: isSelected ? Colors.white : Colors.black,
                         fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
@@ -63,4 +67,3 @@ class _TimePeriodSelectorState extends State<TimePeriodSelector> {
     );
   }
 }
-

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:akilli_borsa/Controller/user_controller.dart';
 import 'package:akilli_borsa/View/Widgets/buttons.dart';
-import 'package:akilli_borsa/View/Widgets/textFields.dart';
+import 'package:akilli_borsa/View/Widgets/text_fields.dart';
 
 import '../Widgets/navigation_bar.dart';
 

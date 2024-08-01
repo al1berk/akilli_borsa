@@ -1,7 +1,6 @@
 import 'package:akilli_borsa/View/grafik.dart';
 import 'package:akilli_borsa/View/stock%20markets/markets.dart';
 import 'package:akilli_borsa/View/uyelik_islemleri/sign_in_view.dart';
-import 'package:akilli_borsa/View/uyelik_islemleri/sign_up_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -31,7 +30,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:  SignInView(),
+      home:  Markets(),
 
       );
   }

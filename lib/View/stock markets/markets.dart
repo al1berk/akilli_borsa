@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../Controller/stock_controller.dart';
+import '../../Controller/user_controller.dart';
 import '../Widgets/navigation_bar.dart';
 import 'stocks.dart';
 
@@ -13,6 +14,7 @@ class Markets extends StatelessWidget {
    Markets({super.key});
   final StockController stockController = Get.put(StockController());
    late List<String> stocksList ;
+   final UserController userController = Get.put(UserController()); // geçici olarak buraya eklendi
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,7 @@ class Markets extends StatelessWidget {
         }
 
 
-        Get.to(Stocks() , arguments: stocksList);
+        Get.to(const Stocks() , arguments: stocksList);
       } ),
       bottomNavigationBar: BottomNavigationBarWidget(),
     );

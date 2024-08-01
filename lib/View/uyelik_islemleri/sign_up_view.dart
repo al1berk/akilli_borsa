@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../Controller/auth_controller.dart';
-import '../Widgets/textFields.dart';
+import '../Widgets/text_fields.dart';
 
 class SignUpView extends StatefulWidget {
   const SignUpView({super.key});
@@ -45,7 +45,9 @@ class _SignUpViewState extends State<SignUpView> {
               print("Kullanıcı oluşturuldu uid : ${user.uid}");
               Get.offAll(SignInView());
             } else {
+
               print("Kullanıcı oluşturulamadı");
+
             }
             } else {
               print("Şifreler uyuşmuyor");
