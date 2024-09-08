@@ -6,6 +6,7 @@ class StockController extends GetxController {
   var stockItems = <String,Stock>{}.obs;
   var isLoading = true.obs;
 
+
   @override
   void onInit() {
     fetchStocks("AKBNK");

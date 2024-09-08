@@ -1,6 +1,8 @@
 import 'package:akilli_borsa/View/portf%C3%B6y/portfoy_page.dart';
 import 'package:akilli_borsa/View/profile/profile_page.dart';
 import 'package:akilli_borsa/View/stock%20markets/markets.dart';
+import 'package:akilli_borsa/View/stock%20markets/stock_detail.dart';
+import 'package:akilli_borsa/View/tools/toolsView.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 final RxInt selectedIndex = 1.obs;
@@ -19,7 +21,11 @@ class BottomNavigationBarWidget extends StatelessWidget {
         case 1:
           Get.offAll(() => Markets() ,transition: Transition.fadeIn);
           break;
+
         case 2:
+          Get.offAll(() =>  const ToolsView() , transition: Transition.fadeIn);
+          break;
+        case 3:
           Get.offAll(() => const ProfilePage() , transition: Transition.fadeIn);
           break;
       }
@@ -30,6 +36,9 @@ class BottomNavigationBarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() => BottomNavigationBar(
       currentIndex: selectedIndex.value,
+      selectedItemColor: Colors.deepPurple,
+      unselectedItemColor: Colors.black,
+
       onTap: onItemTapped,
       items: const [
         BottomNavigationBarItem(
@@ -40,6 +49,11 @@ class BottomNavigationBarWidget extends StatelessWidget {
           icon: Icon(Icons.auto_graph_outlined),
           label: 'Piyasalar',
         ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.dashboard_customize),
+          label: 'Araçlar',
+        ),
+
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
           label: 'Profil',

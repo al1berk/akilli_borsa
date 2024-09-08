@@ -3,6 +3,7 @@ class UserModel {
   final String userID;
   final String username;
   final String email;
+  final List<String> tools;
 
 
   UserModel({
@@ -11,6 +12,8 @@ class UserModel {
     required this.userID,
     required this.username,
     required this.email,
+    this.tools = const [],
+
 
 
 

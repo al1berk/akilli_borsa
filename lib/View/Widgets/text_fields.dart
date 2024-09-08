@@ -6,15 +6,16 @@ class TextFieldOne extends StatelessWidget {
   final TextEditingController controller;
   final ValueChanged<String>? onChanged;
   final bool isPassword;
-
+  double width;
   final String labelText , hintText;
-  const TextFieldOne(
+   TextFieldOne(
       {Key? key,
         required this.labelText,
         required this.hintText,
         required this.controller,
         required this.onChanged,
         this.isPassword = false,
+        this.width = 0.65,
       })
       : super(key: key);
 
@@ -25,7 +26,7 @@ class TextFieldOne extends StatelessWidget {
     return  Center(
       child: Container(
         padding: const EdgeInsets.all(10),
-        width: MediaQuery.of(context).size.width * 0.65,
+        width: MediaQuery.of(context).size.width * width,
         height: MediaQuery.of(context).size.height * 0.1,
 
         child:TextField(

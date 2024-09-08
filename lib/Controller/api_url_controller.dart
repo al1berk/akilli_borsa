@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 class ApiUrlController {
-  var grafikType = "grafik2".obs;
+  var page = "grafik2".obs;
   var apiUrl = "".obs;
 
 
@@ -9,6 +9,6 @@ class ApiUrlController {
     apiUrl.value = url;
   }
   void setGrafikType(String type) {
-    grafikType.value = type;
+    page.value = type;
   }
 }

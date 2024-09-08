@@ -28,7 +28,7 @@ class _StocksState extends State<Stocks> {
       StockListWidgetTwo(
         market: stocksList,
         onItemClick: (item) {
-          Get.to(StockDetail(),arguments: item);
+          Get.to(TabBarPage(),arguments: item);
 
         },
       ),

@@ -1,13 +1,18 @@
+import 'package:akilli_borsa/Controller/firestore_controller.dart';
+
 import '../database_provider.dart';
 import 'user_model.dart';
 
 class UserDao {
   final dbProvider = DatabaseProvider.db;
 
+  final FirestoreController _firestoreController = FirestoreController();
+
   Future<int> createUser(UserModel user) async {
     try {
       final db = await dbProvider.database;
       print(db);
+      await _firestoreController.addUser(user);
       return await db.insert('user', user.toMap());
     } catch (e) {
       print("Error creating user: $e");

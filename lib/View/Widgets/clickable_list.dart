@@ -210,7 +210,7 @@ class StockListWidgetTwo extends StatelessWidget {
                       Expanded(
                         flex: 2,
                         child: Text(
-                          stockController.stockItems[key]?.open.toStringAsFixed(2) ?? "",
+                          stockController.stockItems[key]?.close.toStringAsFixed(2) ?? "",
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
@@ -223,7 +223,7 @@ class StockListWidgetTwo extends StatelessWidget {
                               color: stockController.stockItems[key]?.isUp() ?? false ? Colors.green : Colors.red,
                             ),
                             Text(
-                              stockController.stockItems[key]?.getPercentage() ?? "",
+                              "%${stockController.stockItems[key]?.getPercentage()}" ?? "",
                               style: TextStyle(
                                 color: stockController.stockItems[key]?.isUp() ?? false ? Colors.green : Colors.red,
                                 fontWeight: FontWeight.bold,
